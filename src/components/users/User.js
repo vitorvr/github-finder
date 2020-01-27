@@ -1,10 +1,12 @@
 import React, { useEffect, Fragment } from 'react';
-import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
+import Spinner from '../layout/Spinner';
+import Repos from '../repos/Repos';
 
-const User = ({ match, getUser, user, loading }) => {
+const User = ({ match, getUser, getUserRepos, user, userRepos, loading }) => {
   useEffect(() => {
     getUser(match.params.username);
+    getUserRepos(match.params.username);
   }, []);
   const {
     name,
@@ -89,6 +91,7 @@ const User = ({ match, getUser, user, loading }) => {
         <div className="badge badge-light">Public Repos: {public_repos}</div>
         <div className="badge badge-dark">Public Gists: {public_gists}</div>
       </div>
+      <Repos repos={userRepos} />
     </Fragment>
   );
 };
