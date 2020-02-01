@@ -8,6 +8,7 @@ const User = ({ match, getUser, getUserRepos, user, userRepos, loading }) => {
     getUser(match.params.username);
     getUserRepos(match.params.username);
   }, []);
+
   const {
     name,
     avatar_url,
